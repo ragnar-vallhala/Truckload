@@ -154,6 +154,10 @@ public:
     */
     Truckload(Box &box);
     
+    /*
+    Insersts package at te begging of truckload
+    @param box: reference to a box 
+    */
     Truckload *insertBegin(Box &box);
     
     Truckload *insertEnd(Box &box);
