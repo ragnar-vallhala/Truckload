@@ -97,16 +97,16 @@ public:
     /*
     Constructor
     @param l: length of box in package
-    @param b: length of box in package
-    @param h: length of box in package
-    @param w: length of box in package
+    @param b: breadth of box in package
+    @param h: height of box in package
+    @param w: weight of box in package
     */
     Package(float l, float b, float h, float w);
 
     /*
      Constructor
      @param l: length of box in package
-     @param w: length of box in package
+     @param w: weight of box in package
      */
     Package(float l, float w);
 
@@ -154,7 +154,7 @@ public:
     Truckload(Box &box);
     
     /*
-    Insersts package at te begging of truckload
+    Inserts package at the beginning of truckload
     @param box: reference to a box 
     */
     Truckload *insertBegin(Box &box);
@@ -168,6 +168,18 @@ public:
     Truckload *sortedInsertbyHeight(Box &box);
 
     Truckload *sortedInsertbyVolume(Box &box);
+
+    Truckload *insertBegin(Package &pkg);
+    
+    Truckload *insertEnd(Package &pkg);
+
+    Truckload *sortedInsertbyLength(Package &pkg);
+
+    Truckload *sortedInsertbyBreadth(Package &pkg);
+
+    Truckload *sortedInsertbyHeight(Package &pkg);
+
+    Truckload *sortedInsertbyVolume(Package &pkg);
 
     Truckload *sortByLength();
 
