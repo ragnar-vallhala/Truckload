@@ -148,10 +148,14 @@ private:
     Package *head;
 
 public:
+    /*
+    Constructer
+    @param box: reference to box
+    */
     Truckload(Box &box);
-
+    
     Truckload *insertBegin(Box &box);
-
+    
     Truckload *insertEnd(Box &box);
 
     Truckload *sortedInsertbyLength(Box &box);
