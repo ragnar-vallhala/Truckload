@@ -2,7 +2,6 @@
 date 14/04/2023
 author Ashutosh
 */
-#include <iostream>
 
 class Box
 {
