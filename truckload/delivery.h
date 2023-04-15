@@ -2,6 +2,7 @@
 date 14/04/2023
 author Ashutosh
 */
+#include <iostream>
 
 class Box
 {
@@ -83,8 +84,8 @@ public:
 class Package
 {
 private:
-    Box *previousBox = nullptr;
-    Box *nextBox = nullptr;
+    Package *previousPackage = nullptr;
+    Package *nextPackage = nullptr;
     Box box;
 
 public:
@@ -111,11 +112,34 @@ public:
     Package(float l, float w);
 
     /*
+     Constructor
+     @param box: reference to box
+     */
+    Package(Box &box);
+
+    /*
     Equal to operation between packages
     @param &package: refernce to a package
     */
     bool operator==(Package &package);
+
+
+    /*
+    Updates next package address
+    @param &pkg: refernce to a package
+    */
+    void updateNext(Package &pkg);
+
+    /*
+    Updates previous package address
+    @param &pkg: refernce to a package
+    */
+    void updatePrevious(Package &pkg);
+
+    
+
 };
+
 
 class Truckload
 {
@@ -124,7 +148,7 @@ private:
     Package *head;
 
 public:
-    Truckload();
+    Truckload(Box &box);
 
     Truckload *insertBegin(Box &box);
 

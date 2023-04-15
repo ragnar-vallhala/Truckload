@@ -67,6 +67,11 @@ Package::Package(float l, float w)
     this->box = newBox;
 }
 
+Package::Package(Box &box)
+{
+    this->box = box;
+}
+
 bool Package::operator==(Package &package)
 {
     if (this->box == package.box)
@@ -74,14 +79,28 @@ bool Package::operator==(Package &package)
     return false;
 }
 
-Truckload::Truckload()
+void Package::updateNext(Package &pkg)
 {
-    head = new Package;
+    this->nextPackage=&pkg;
+}
+
+void Package::updatePrevious(Package &pkg)
+{
+    this->previousPackage = &pkg;
+}
+
+Truckload::Truckload(Box &box)
+{
+    head = new Package(box);
 }
 
 Truckload *Truckload::insertBegin(Box &box)
-{
-    return nullptr;
+{   
+    Package newPkg = Package(box);
+    Package* temp = this->head;
+    newPkg.updateNext(*temp);
+    this->head = &newPkg;
+    return this;
 }
 
 Truckload *Truckload::insertEnd(Box &box)
@@ -111,5 +130,12 @@ Truckload *Truckload::sortedInsertbyVolume(Box &box)
 
 Truckload *Truckload::sortByLength()
 {
+    return nullptr;
+}
+
+Truckload *Truckload::printPackages()
+{
+    Package *currPkg = this->head;
+    
     return nullptr;
 }
