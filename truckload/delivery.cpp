@@ -128,7 +128,47 @@ Truckload *Truckload::sortedInsertbyVolume(Box &box)
     return nullptr;
 }
 
+Truckload *Truckload::insertBegin(Package &pkg)
+{
+    return nullptr;
+}
+
+Truckload *Truckload::insertEnd(Package &pkg)
+{
+    return nullptr;
+}
+
+Truckload *Truckload::sortedInsertbyLength(Package &pkg)
+{
+    return nullptr;
+}
+
+Truckload *Truckload::sortedInsertbyBreadth(Package &pkg)
+{
+    return nullptr;
+}
+
+Truckload *Truckload::sortedInsertbyHeight(Package &pkg)
+{
+    return nullptr;
+}
+
+Truckload *Truckload::sortedInsertbyVolume(Package &pkg)
+{
+    return nullptr;
+}
+
 Truckload *Truckload::sortByLength()
+{
+    return nullptr;
+}
+
+Truckload *Truckload::sortByBreadth()
+{
+    return nullptr;
+}
+
+Truckload *Truckload::sortByHeight()
 {
     return nullptr;
 }
@@ -137,5 +177,20 @@ Truckload *Truckload::printPackages()
 {
     Package *currPkg = this->head;
     
+    return nullptr;
+}
+
+Truckload *Truckload::deleteBegin()
+{
+    return nullptr;
+}
+
+Truckload *Truckload::deleteEnd()
+{
+    return nullptr;
+}
+
+Truckload *Truckload::deletePackage(Package &package)
+{
     return nullptr;
 }
