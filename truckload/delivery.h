@@ -2,6 +2,7 @@
 date 14/04/2023
 author Ashutosh
 */
+#pragma once
 
 class Box
 {
@@ -59,7 +60,7 @@ public:
     Sets weight of box
     @param w: weight of box
     */
-    void setHeight(float w);
+    void setWeight(float w);
 
     /*
     Returns volume of the box

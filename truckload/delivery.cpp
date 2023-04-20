@@ -33,7 +33,7 @@ void Box::setHeight(float len)
     this->height = len;
 }
 
-void Box::setHeight(float w)
+void Box::setWeight(float w)
 {
     this->weight = w;
 }
@@ -57,13 +57,13 @@ bool Box::operator==(Box &box)
 
 Package::Package(float l, float b, float h, float w)
 {
-    Box newBox = Box(l, b, h, w);
+    Box newBox(l, b, h, w);
     this->box = newBox;
 }
 
 Package::Package(float l, float w)
 {
-    Box newBox = Box(l, w);
+    Box newBox(l, w);
     this->box = newBox;
 }
 
@@ -96,7 +96,7 @@ Truckload::Truckload(Box &box)
 
 Truckload *Truckload::insertBegin(Box &box)
 {   
-    Package newPkg = Package(box);
+    Package newPkg(box);
     Package* temp = this->head;
     newPkg.updateNext(*temp);
     this->head = &newPkg;
