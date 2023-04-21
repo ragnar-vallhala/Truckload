@@ -85,6 +85,12 @@ public:
     Prints the configuration of a box
     */
     friend std::ostream& operator<<(std::ostream& out, Box&box);
+
+
+    /*
+    Declared Truckload as friend class to the Box class to access private members
+    */
+    friend class Truckload;
 };
 
 class Package

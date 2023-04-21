@@ -121,8 +121,24 @@ Truckload *Truckload::insertEnd(Box &box)
 }
 
 Truckload *Truckload::sortedInsertbyLength(Box &box)
-{
-    return nullptr;
+{   
+    Package *newPkg = new Package(box);
+    Package *temp  = this->head;
+
+    if(temp == nullptr || temp->box.length>box.length){
+        Package* tempPkg = this->head;
+        newPkg->updateNext(*tempPkg);
+        this->head = newPkg;
+        return this;
+    }
+    while(temp->box.length<newPkg->box.length){
+        temp = temp->nextPackage;
+    }
+    Package *var = temp->nextPackage;
+    newPkg->updateNext(*var);
+    temp->updateNext(*newPkg);
+
+    return this;
 }
 
 Truckload *Truckload::sortedInsertbyBreadth(Box &box)
