@@ -2,6 +2,7 @@
 #include <iostream>
 
 int main(){
-    Truckload t;
-    std::cout<<"hi"<<std::endl;
+
+   Box box(1,2,3,4);
+   std::cout<<box;
 }

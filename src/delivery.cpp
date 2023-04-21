@@ -55,6 +55,8 @@ bool Box::operator==(Box &box)
     return false;
 }
 
+
+
 Package::Package(float l, float b, float h, float w)
 {
     Box newBox(l, b, h, w);
@@ -193,4 +195,10 @@ Truckload *Truckload::deleteEnd()
 Truckload *Truckload::deletePackage(Package &package)
 {
     return nullptr;
+}
+
+std::ostream &operator<<(std::ostream &out, Box& box)
+{
+   out<<"Length: "<<box.length<<std::endl<<"Breadth: "<<box.breadth<<std::endl<<"Height: "<<box.height<<std::endl<<"Weight: "<<box.weight<<std::endl;
+    return out;
 }
