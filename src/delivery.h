@@ -177,16 +177,42 @@ public:
     */
     Truckload *insertBegin(Box &box);
     
+    /*
+    Inserts package at the end of truckload
+    @param box: reference to a box 
+    */
     Truckload *insertEnd(Box &box);
 
+    
+    /*
+    Inserts package in ascending order of length
+    @param box: reference to a box 
+    */
     Truckload *sortedInsertbyLength(Box &box);
 
+    
+    /*
+    Inserts package in ascending order of breadth
+    @param box: reference to a box 
+    */
     Truckload *sortedInsertbyBreadth(Box &box);
 
+    
+    /*
+    Inserts package in ascending order of height
+    @param box: reference to a box 
+    */
     Truckload *sortedInsertbyHeight(Box &box);
 
+    
+    /*
+    Inserts package in ascending order of volume
+    @param box: reference to a box 
+    */
     Truckload *sortedInsertbyVolume(Box &box);
 
+
+    
     Truckload *insertBegin(Package &pkg);
     
     Truckload *insertEnd(Package &pkg);
