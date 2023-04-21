@@ -3,6 +3,7 @@ date 14/04/2023
 author Ashutosh
 */
 #pragma once
+#include <iostream>
 
 class Box
 {
@@ -79,6 +80,11 @@ public:
     @param &box: reference to a box
     */
     bool operator==(Box &box);
+
+    /*
+    Prints the configuration of a box
+    */
+    friend std::ostream& operator<<(std::ostream& out, Box&box);
 };
 
 class Package
