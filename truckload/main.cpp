@@ -1,4 +1,4 @@
-#include "delivery.cpp"
+#include "delivery.h"
 #include <iostream>
 
 int main(){
