@@ -2,6 +2,8 @@
 date 14/04/2023
 author Ashutosh
 */
+#pragma once
+#include <iostream>
 
 class Box
 {
@@ -59,7 +61,7 @@ public:
     Sets weight of box
     @param w: weight of box
     */
-    void setHeight(float w);
+    void setWeight(float w);
 
     /*
     Returns volume of the box
@@ -78,6 +80,17 @@ public:
     @param &box: reference to a box
     */
     bool operator==(Box &box);
+
+    /*
+    Prints the configuration of a box
+    */
+    friend std::ostream& operator<<(std::ostream& out, Box&box);
+
+
+    /*
+    Declared Truckload as friend class to the Box class to access private members
+    */
+    friend class Truckload;
 };
 
 class Package
@@ -144,9 +157,14 @@ class Truckload
 {
 
 private:
-    Package *head;
+    Package *head = nullptr;
 
 public:
+
+    /*
+    Constructer
+    */
+    Truckload() = default;
     /*
     Constructer
     @param box: reference to box
@@ -159,16 +177,42 @@ public:
     */
     Truckload *insertBegin(Box &box);
     
+    /*
+    Inserts package at the end of truckload
+    @param box: reference to a box 
+    */
     Truckload *insertEnd(Box &box);
 
+    
+    /*
+    Inserts package in ascending order of length
+    @param box: reference to a box 
+    */
     Truckload *sortedInsertbyLength(Box &box);
 
+    
+    /*
+    Inserts package in ascending order of breadth
+    @param box: reference to a box 
+    */
     Truckload *sortedInsertbyBreadth(Box &box);
 
+    
+    /*
+    Inserts package in ascending order of height
+    @param box: reference to a box 
+    */
     Truckload *sortedInsertbyHeight(Box &box);
 
+    
+    /*
+    Inserts package in ascending order of volume
+    @param box: reference to a box 
+    */
     Truckload *sortedInsertbyVolume(Box &box);
 
+
+    
     Truckload *insertBegin(Package &pkg);
     
     Truckload *insertEnd(Package &pkg);

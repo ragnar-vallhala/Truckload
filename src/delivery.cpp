@@ -33,7 +33,7 @@ void Box::setHeight(float len)
     this->height = len;
 }
 
-void Box::setHeight(float w)
+void Box::setWeight(float w)
 {
     this->weight = w;
 }
@@ -55,15 +55,17 @@ bool Box::operator==(Box &box)
     return false;
 }
 
+
+
 Package::Package(float l, float b, float h, float w)
 {
-    Box newBox = Box(l, b, h, w);
+    Box newBox(l, b, h, w);
     this->box = newBox;
 }
 
 Package::Package(float l, float w)
 {
-    Box newBox = Box(l, w);
+    Box newBox(l, w);
     this->box = newBox;
 }
 
@@ -96,31 +98,89 @@ Truckload::Truckload(Box &box)
 
 Truckload *Truckload::insertBegin(Box &box)
 {   
-    Package newPkg = Package(box);
+    Package *newPkg = new Package(box);
     Package* temp = this->head;
-    newPkg.updateNext(*temp);
-    this->head = &newPkg;
+    newPkg->updateNext(*temp);
+    this->head = newPkg;
     return this;
 }
 
 Truckload *Truckload::insertEnd(Box &box)
-{
-    return nullptr;
+{   
+    Package *newPkg = new Package(box);
+    Package* temp = this->head;
+    if(temp == nullptr){
+        this->head = newPkg;
+        return this;
+    }
+    while(temp->nextPackage!=nullptr){
+        temp = temp->nextPackage;
+    }
+    temp->updateNext(*newPkg);
+    return this;
 }
 
 Truckload *Truckload::sortedInsertbyLength(Box &box)
-{
-    return nullptr;
+{   
+    Package *newPkg = new Package(box);
+    Package *temp  = this->head;
+
+    if(temp == nullptr || temp->box.length>box.length){
+        Package* tempPkg = this->head;
+        newPkg->updateNext(*tempPkg);
+        this->head = newPkg;
+        return this;
+    }
+    while(temp->box.length<newPkg->box.length && temp->nextPackage!=nullptr){
+        temp = temp->nextPackage;
+    }
+    Package *var = temp->nextPackage;
+    newPkg->updateNext(*var);
+    temp->updateNext(*newPkg);
+
+    return this;
 }
 
 Truckload *Truckload::sortedInsertbyBreadth(Box &box)
 {
-    return nullptr;
+    Package *newPkg = new Package(box);
+    Package *temp  = this->head;
+
+    if(temp == nullptr || temp->box.breadth>box.breadth){
+        Package* tempPkg = this->head;
+        newPkg->updateNext(*tempPkg);
+        this->head = newPkg;
+        return this;
+    }
+    while(temp->box.breadth<newPkg->box.breadth && temp->nextPackage!=nullptr){
+        temp = temp->nextPackage;
+    }
+    Package *var = temp->nextPackage;
+    newPkg->updateNext(*var);
+    temp->updateNext(*newPkg);
+
+    return this;
 }
 
 Truckload *Truckload::sortedInsertbyHeight(Box &box)
 {
-    return nullptr;
+    Package *newPkg = new Package(box);
+    Package *temp  = this->head;
+
+    if(temp == nullptr || temp->box.height>box.height){
+        Package* tempPkg = this->head;
+        newPkg->updateNext(*tempPkg);
+        this->head = newPkg;
+        return this;
+    }
+    while(temp->box.height<newPkg->box.height && temp->nextPackage!=nullptr){
+        temp = temp->nextPackage;
+    }
+    Package *var = temp->nextPackage;
+    newPkg->updateNext(*var);
+    temp->updateNext(*newPkg);
+
+    return this;
 }
 
 Truckload *Truckload::sortedInsertbyVolume(Box &box)
@@ -176,8 +236,13 @@ Truckload *Truckload::sortByHeight()
 Truckload *Truckload::printPackages()
 {
     Package *currPkg = this->head;
+    while(currPkg!=nullptr){
+        std::cout<<currPkg->box<<std::endl<<"-----------------"<<std::endl;
+        currPkg = currPkg->nextPackage;
+    }
+    std::cout<<std::endl;
     
-    return nullptr;
+    return this;
 }
 
 Truckload *Truckload::deleteBegin()
@@ -193,4 +258,10 @@ Truckload *Truckload::deleteEnd()
 Truckload *Truckload::deletePackage(Package &package)
 {
     return nullptr;
+}
+
+std::ostream &operator<<(std::ostream &out, Box& box)
+{
+   out<<"Length: "<<box.length<<std::endl<<"Breadth: "<<box.breadth<<std::endl<<"Height: "<<box.height<<std::endl<<"Weight: "<<box.weight<<std::endl;
+    return out;
 }
