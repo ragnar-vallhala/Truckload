@@ -49,13 +49,13 @@ public:
     Sets breadth of box
     @param len: breadth of box
     */
-    void setBreadth(float len);
+    void setBreadth(float brd);
 
     /*
     Sets height of box
     @param len: height of box
     */
-    void setHeight(float len);
+    void setHeight(float ht);
 
     /*
     Sets weight of box
