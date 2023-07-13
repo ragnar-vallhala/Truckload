@@ -84,8 +84,7 @@ public:
     /*
     Prints the configuration of a box
     */
-    friend std::ostream& operator<<(std::ostream& out, Box&box);
-
+    friend std::ostream &operator<<(std::ostream &out, Box &box);
 
     /*
     Declared Truckload as friend class to the Box class to access private members
@@ -135,7 +134,6 @@ public:
     */
     bool operator==(Package &package);
 
-
     /*
     Updates next package address
     @param &pkg: refernce to a package
@@ -147,11 +145,7 @@ public:
     @param &pkg: refernce to a package
     */
     void updatePrevious(Package &pkg);
-
-    
-
 };
-
 
 class Truckload
 {
@@ -160,82 +154,95 @@ private:
     Package *head = nullptr;
 
 public:
-
     /*
-    Constructer
+    Constructor
     */
     Truckload() = default;
     /*
-    Constructer
+    Constructor
     @param box: reference to box
     */
     Truckload(Box &box);
-    
+
     /*
     Inserts package at the beginning of truckload
-    @param box: reference to a box 
+    @param box: reference to a box
     */
     Truckload *insertBegin(Box &box);
-    
+
     /*
     Inserts package at the end of truckload
-    @param box: reference to a box 
+    @param box: reference to a box
     */
     Truckload *insertEnd(Box &box);
 
-    
     /*
     Inserts package in ascending order of length
-    @param box: reference to a box 
+    @param box: reference to a box
     */
     Truckload *sortedInsertbyLength(Box &box);
 
-    
     /*
     Inserts package in ascending order of breadth
-    @param box: reference to a box 
+    @param box: reference to a box
     */
     Truckload *sortedInsertbyBreadth(Box &box);
 
-    
     /*
     Inserts package in ascending order of height
-    @param box: reference to a box 
+    @param box: reference to a box
     */
     Truckload *sortedInsertbyHeight(Box &box);
 
-    
     /*
     Inserts package in ascending order of volume
-    @param box: reference to a box 
+    @param box: reference to a box
     */
     Truckload *sortedInsertbyVolume(Box &box);
 
-
-    
+    /// @brief Inserts the package at the beginning of the truck
+    /// @param pkg :reference to a package
     Truckload *insertBegin(Package &pkg);
-    
+
+    /// @brief Inserts the package at the end of the truck
+    /// @param pkg :reference to a package
     Truckload *insertEnd(Package &pkg);
 
+    /// @brief inserts a package in ascending order of length
+    /// @param pkg : reference to a package
     Truckload *sortedInsertbyLength(Package &pkg);
 
+    /// @brief inserts a package in ascending order of breadth
+    /// @param pkg : reference to a package
     Truckload *sortedInsertbyBreadth(Package &pkg);
 
+    /// @brief inserts a package in ascending order of height
+    /// @param pkg : reference to a package
     Truckload *sortedInsertbyHeight(Package &pkg);
 
+    /// @brief inserts a package in ascending order of volume of the package
+    /// @param pkg : reference to a package
     Truckload *sortedInsertbyVolume(Package &pkg);
 
+    /// @brief sorts the packages by length
     Truckload *sortByLength();
 
+    /// @brief sorts the packages by breadth
     Truckload *sortByBreadth();
 
+    /// @brief sorts the packages by height
     Truckload *sortByHeight();
 
+    /// @brief prints the dimensions of the packages in the truckload 
     Truckload *printPackages();
 
+    /// @brief 
     Truckload *deleteBegin();
 
+    /// @brief
     Truckload *deleteEnd();
 
+    /// @brief
+    /// @param package
     Truckload *deletePackage(Package &package);
 };
