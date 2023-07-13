@@ -23,14 +23,14 @@ void Box::setLength(float len)
     this->length = len;
 }
 
-void Box::setBreadth(float len)
+void Box::setBreadth(float brd)
 {
-    this->breadth = len;
+    this->breadth = brd;
 }
 
-void Box::setHeight(float len)
+void Box::setHeight(float ht)
 {
-    this->height = len;
+    this->height = ht;
 }
 
 void Box::setWeight(float w)
@@ -40,7 +40,7 @@ void Box::setWeight(float w)
 
 float Box::calcVolume()
 {
-    return this->breadth * this->height * this->height;
+    return (this->breadth) * (this->height) * ( this->height);
 }
 
 float Box::calcDensity()
@@ -131,7 +131,7 @@ Truckload *Truckload::sortedInsertbyLength(Box &box)
         this->head = newPkg;
         return this;
     }
-    while(temp->box.length<newPkg->box.length && temp->nextPackage!=nullptr){
+    while(temp->box.length < newPkg->box.length && temp->nextPackage != nullptr){
         temp = temp->nextPackage;
     }
     Package *var = temp->nextPackage;
@@ -146,13 +146,13 @@ Truckload *Truckload::sortedInsertbyBreadth(Box &box)
     Package *newPkg = new Package(box);
     Package *temp  = this->head;
 
-    if(temp == nullptr || temp->box.breadth>box.breadth){
+    if( temp == nullptr || temp->box.breadth > box.breadth ){
         Package* tempPkg = this->head;
         newPkg->updateNext(*tempPkg);
         this->head = newPkg;
         return this;
     }
-    while(temp->box.breadth<newPkg->box.breadth && temp->nextPackage!=nullptr){
+    while(temp->box.breadth < newPkg->box.breadth && temp->nextPackage != nullptr){
         temp = temp->nextPackage;
     }
     Package *var = temp->nextPackage;
@@ -167,13 +167,13 @@ Truckload *Truckload::sortedInsertbyHeight(Box &box)
     Package *newPkg = new Package(box);
     Package *temp  = this->head;
 
-    if(temp == nullptr || temp->box.height>box.height){
+    if(temp == nullptr || temp->box.height > box.height){
         Package* tempPkg = this->head;
         newPkg->updateNext(*tempPkg);
         this->head = newPkg;
         return this;
     }
-    while(temp->box.height<newPkg->box.height && temp->nextPackage!=nullptr){
+    while(temp->box.height < newPkg->box.height && temp->nextPackage != nullptr){
         temp = temp->nextPackage;
     }
     Package *var = temp->nextPackage;
